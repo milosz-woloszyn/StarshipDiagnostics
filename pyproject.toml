@@ -4,7 +4,13 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
 dependencies = [
+    "black>=25.1.0",
+    "nvidia-ml-py>=13.580.65",
+    "openai>=1.106.1",
+    "psutil>=7.0.0",
+    "python-dotenv>=1.1.1",
     "pyttsx3>=2.99",
-    "pywin32>=305; sys_platform == 'win32'"
+    "pywin32>=305; sys_platform == 'win32'",
+    "wmi>=1.5.1",
 ]
 
