@@ -23,7 +23,7 @@ def speak(text):
 def main():
     ROOT = os.getenv("SystemDrive", "C:") + "\\"
 
-    # Simple non-interactive script: fixed defaults, speak by default
+    # Simple non-interactive script: fixed defaults
     top = 5
 
     stats = {
