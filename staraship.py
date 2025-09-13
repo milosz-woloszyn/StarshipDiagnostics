@@ -21,22 +21,23 @@ def speak(text):
 
 
 def main():
+    load_dotenv(".env")
     ROOT = os.getenv("SystemDrive", "C:") + "\\"
 
     # Simple non-interactive script: fixed defaults
     top = 5
 
     stats = {
-        "cpu": psutil.cpu_percent(interval=0.15),
-        "mem": round(psutil.virtual_memory().percent, 1),
-        "disk": round(psutil.disk_usage(ROOT).percent, 1),
+        "cpu %": psutil.cpu_percent(interval=0.15),
+        "mem %": round(psutil.virtual_memory().percent, 1),
+        "disk %": round(psutil.disk_usage(ROOT).percent, 1),
         "procs": len(psutil.pids()),
         "cpu_temp_c": cpu_temp_c(),
         "gpus": gpu_info(),
         "top_apps": top_apps(top),
     }
-    print(stats)
-    load_dotenv(".env")
+    print(json.dumps(stats, indent=4))
+
     client = OpenAI()
     request = client.chat.completions.create(
         model="gpt-4o-mini",
