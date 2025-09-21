@@ -7,16 +7,22 @@ def main():
 
     client = OpenAI()
 
+    personality = input("jaka ma być torzsamość chat'a")
+
     messages=[
         {
             "role": "system",
-            "content": "jesteś pompą ciepła odpowiadaj z powiedzeniami: Niech ciepło popłynie, gdy zima się zbliża!"
+            "content": personality,
 
         },
     ]
 
     while True:
         imput_text = input("Please enter your imputation text: ")
+
+        if imput_text == "/exit":
+            break
+
         messages+=[{"role": "user","content": imput_text}]
 
         request = client.chat.completions.create(model="gpt-4o-mini",messages=messages)
